@@ -11,13 +11,14 @@
   "dependencies": {
     "next": "11.0.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "styled-components": "^5.3.0"
   },
   "devDependencies": {
     "eslint": "7.29.0",
     "eslint-config-next": "11.0.0"
   },
-  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "description": "This is a calculator built with Next JS for a Frontend Mentor Challenge",
   "main": "next.config.js",
   "author": "Jesus Ramirez",
   "license": "ISC"

@@ -85,7 +85,7 @@ The designs were created to the following widths:
 
 ### Body Copy
 
-- Font size (numbers): 32px
+- Font size (numbers): 32px;
 
 ### Font
 
