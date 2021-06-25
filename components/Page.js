@@ -17,11 +17,15 @@ const GlobalStyles = createGlobalStyle`
         --keygrayshadow: hsl(28, 16%, 65%);
         box-sizing: border-box;
         --fontsizenum: 32px;
+        --white: hsl(0, 0, 100%);
+        --bluetxt: hsl(221, 14%, 31%);
+        --font: 'Spartan', sans-serif;
     }
     *, *:before, *:after {box-sizing: inherit;}
     body {
         padding: 0;
         margin: 0;
+        font-family: 'Spartan', sans-serif;
     }
     h1, h2, h3, p, ul, li {
         margin: 0;

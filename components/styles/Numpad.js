@@ -2,16 +2,21 @@ import styled from 'styled-components';
 
 const NumpadStyle = styled.div`
   width: 100%;
-  height: 300px;
+  min-height: 380px;
   background: var(--screenbg);
-  border-radius: 5px;
-  padding: 1rem;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  .big--btn {
-    flex: 2;
+  color: var(--bluetxt);
+  .btn--del {
+    background: var(--keybluebg);
+    box-shadow: 0 5px var(--keyblueshadow);
+    font-size: 18px;
+    color: white;
+    font-family: var(--font);
   }
 `;
 

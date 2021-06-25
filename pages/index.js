@@ -6,6 +6,7 @@ import CalcContainer from '../components/styles/CalcContainer';
 import NumpadStyle from '../components/styles/Numpad';
 import ScreenStyles from '../components/styles/Screen';
 import buttons from '../lib/calculator-buttons';
+import newBtns from '../lib/calculator-btn-obj';
 
 const MainContainer = styled.main`
   width: 100%;
@@ -29,6 +30,16 @@ export default function Home() {
   return (
     <Page>
       <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com"></link>
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin
+        ></link>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap"
+          rel="stylesheet"
+        ></link>
         <title>Calculator</title>
       </Head>
       <MainContainer>
@@ -39,20 +50,16 @@ export default function Home() {
           </CalcHeader>
           <ScreenStyles></ScreenStyles>
           <NumpadStyle>
-            {buttons.map((button) => {
+            {Object.keys(newBtns).map((button) => {
+              return <ButtonStyles>{newBtns[button].value}</ButtonStyles>;
+            })}
+            {/* {buttons.map((button) => {
               return (
-                <ButtonStyles
-                  key={button}
-                  value={button}
-                  className={
-                    button == 'reset' || button == '=' ? 'big--btn' : null
-                  }
-                >
+                <ButtonStyles key={button} value={button}>
                   {button}
                 </ButtonStyles>
               );
-            })}
-            ;
+            })} */}
           </NumpadStyle>
         </CalcContainer>
       </MainContainer>
