@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const ButtonStyles = styled.button`
   font-size: var(--fontsizenum);
-  text-transform: uppercase;
   background: var(--keygraybg);
   color: var(--mainbg);
   cursor: pointer;
@@ -12,6 +11,7 @@ const ButtonStyles = styled.button`
   box-shadow: 0 5px var(--keygrayshadow);
   margin: 8px 0;
   font-family: var(--font);
+  line-height: 2;
 `;
 
 export default ButtonStyles;
