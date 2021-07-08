@@ -168,20 +168,32 @@ export default function Home() {
           <CalcHeader>
             <h1 aria-label="calculator">calc</h1>
             <ThemeSwitchStyles>
-              <p class="theme">theme</p>
-              <div class="toggle">
-                <div class="toggle--num">
+              <p className="theme">theme</p>
+              <div className="toggle">
+                <div className="toggle--num">
                   <p>1</p>
                   <p>2</p>
                   <p>3</p>
                 </div>
-                <div class="toggle--switch">
+                <div className="toggle--switch">
                   <input id="1" name="theme" type="radio" checked="checked" />
-                  <label class="label-one" for="1" onClick={toggleSwitch} />
+                  <label
+                    className="label-one"
+                    htmlFor="1"
+                    onClick={toggleSwitch}
+                  />
                   <input id="2" name="theme" type="radio" checked="" />
-                  <label class="label-two" for="2" onClick={toggleSwitch} />
+                  <label
+                    className="label-two"
+                    htmlFor="2"
+                    onClick={toggleSwitch}
+                  />
                   <input id="3" name="theme" type="radio" checked="" />
-                  <label class="label-three" for="3" onClick={toggleSwitch} />
+                  <label
+                    className="label-three"
+                    htmlFor="3"
+                    onClick={toggleSwitch}
+                  />
                 </div>
               </div>
             </ThemeSwitchStyles>
