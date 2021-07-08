@@ -28,26 +28,45 @@ const CalcHeader = styled.div`
 
 export default function Home() {
   let currentNum = '';
-  let baseNum = 0;
-  const [a, setA] = useState(0);
-  const [b, setB] = useState(0);
+  const regex = /\d/;
   const resettingRef = useRef(false);
-  const [acc, setAcc] = useState(0);
+  const [acc, setAcc] = useState('');
   const [screenValue, setScreenValue] = useState('0');
   const [operation, setOperation] = useState('none');
 
   const getResult = function () {
-    //resettingRef.current = true;
-    setAcc(eval(acc + operation + b));
+    resettingRef.current = true;
+    if (operation === 'none') return;
+    let result = eval(acc + operation + screenValue);
+    if (result % 1 == 0) {
+      setAcc(String(result));
+    } else {
+      setAcc(String(result.toFixed(3)));
+    }
   };
 
+  useEffect(() => {
+    if (resettingRef.current) {
+      resettingRef.current = false;
+      displayNum();
+    }
+  }, [acc]);
+
   const displayNum = function () {
-    console.log(`SCREEN == ${acc}`);
+    resettingRef.current = true;
+    setScreenValue(acc);
   };
+
+  useEffect(() => {
+    if (resettingRef.current) {
+      resettingRef.current = false;
+      if (setOperation === 'none') setAcc('');
+    }
+  }, [screenValue]);
 
   const keepNum = function (e) {
     currentNum += e.target.innerText;
-    if (screenValue === '0' || acc !== 0) {
+    if (screenValue === '0' || acc !== '') {
       setScreenValue(currentNum);
     } else {
       setScreenValue(screenValue + currentNum);
@@ -55,9 +74,8 @@ export default function Home() {
   };
 
   const resetCalc = function () {
-    setA(0);
-    setB(0);
-    setAcc(0);
+    currentNum = '';
+    setAcc('');
     setScreenValue('0');
     setOperation('none');
   };
@@ -80,19 +98,18 @@ export default function Home() {
         delNum();
         break;
       case '=':
-        resettingRef.current = true;
-        setB(+screenValue);
+        setOperation('none');
         getResult();
         break;
       default:
         if (screenValue === '0') return;
-        if (acc !== 0) {
-          setB(+screenValue);
+        if (acc !== '' && operation !== 'none') {
+          setOperation(localOperation);
           getResult();
           return;
         }
         setOperation(localOperation);
-        setAcc(+screenValue);
+        setAcc(screenValue);
     }
   };
 
