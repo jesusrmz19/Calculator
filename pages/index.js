@@ -27,8 +27,8 @@ const MainContainer = styled.main`
   --keygrayshadow: ${({ theme }) => theme.mainkeyshadow};
   box-sizing: border-box;
   --fontsizenum: 32px;
-  --white: hsl(0, 0, 100%);
-  --bluetxt: ${({ theme }) => theme.text};
+  --padtxt: ${({ theme }) => theme.text};
+  --restoftxt: ${({ theme }) => theme.restoftxt};
   --font: 'Spartan', sans-serif;
   background: var(--mainbg);
 `;
@@ -37,7 +37,7 @@ const CalcHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: white;
+  color: var(--restoftxt);
   p {
     font-size: 15px;
     text-transform: uppercase;
@@ -163,7 +163,7 @@ export default function Home() {
         ></link>
         <title>Calculator</title>
       </Head>
-      <MainContainer theme={themeOne}>
+      <MainContainer theme={themeTwo}>
         <CalcContainer>
           <CalcHeader>
             <h1 aria-label="calculator">calc</h1>

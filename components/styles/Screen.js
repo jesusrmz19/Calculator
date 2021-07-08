@@ -12,7 +12,7 @@ const ScreenStyles = styled.div`
   flex-direction: column;
   justify-content: center;
   p {
-    color: white;
+    color: var(--restoftxt);
     font-size: var(--fontsizenum);
     text-align: right;
     padding: 1.2rem;
