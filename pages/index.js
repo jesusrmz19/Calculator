@@ -2,16 +2,34 @@ import Head from 'next/head';
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Page from '../components/Page';
+import { themeOne, themeTwo } from '../lib/themes';
 import ButtonStyles from '../components/styles/Button';
 import CalcContainer from '../components/styles/CalcContainer';
 import NumpadStyle from '../components/styles/Numpad';
 import ScreenStyles from '../components/styles/Screen';
+import ThemeSwitchStyles from '../components/styles/ThemeSwitch';
 import { buttons } from '../lib/calculator-buttons';
 
 const MainContainer = styled.main`
   width: 100%;
   height: 100vh;
   position: relative;
+  --mobile: 375px;
+  --desktop: 1440px;
+  --mainbg: ${({ theme }) => theme.mainbg};
+  --darksatblue2: ${({ theme }) => theme.togglebg};
+  --screenbg: ${({ theme }) => theme.screenbg};
+  --keybluebg: ${({ theme }) => theme.sidekeybg};
+  --keyblueshadow: ${({ theme }) => theme.sidekeyshadow};
+  --keyredbg: ${({ theme }) => theme.equalkeybg};
+  --keyredshadow: ${({ theme }) => theme.equalkeyshadow};
+  --keygraybg: ${({ theme }) => theme.mainkeybg};
+  --keygrayshadow: ${({ theme }) => theme.mainkeyshadow};
+  box-sizing: border-box;
+  --fontsizenum: 32px;
+  --white: hsl(0, 0, 100%);
+  --bluetxt: ${({ theme }) => theme.text};
+  --font: 'Spartan', sans-serif;
   background: var(--mainbg);
 `;
 
@@ -31,11 +49,13 @@ export default function Home() {
   const regex = /\d/;
   const resettingRef = useRef(false);
   const [acc, setAcc] = useState('');
+  const [secondDigit, setSecondDigit] = useState(false);
   const [screenValue, setScreenValue] = useState('0');
   const [operation, setOperation] = useState('none');
 
   const getResult = function () {
     resettingRef.current = true;
+    setSecondDigit(false);
     if (operation === 'none') return;
     let result = eval(acc + operation + screenValue);
     if (result % 1 == 0) {
@@ -66,10 +86,20 @@ export default function Home() {
 
   const keepNum = function (e) {
     currentNum += e.target.innerText;
-    if (screenValue === '0' || acc !== '') {
-      setScreenValue(currentNum);
+    if (operation !== 'none') {
+      console.log('SECOND NUMBER');
+      if (!secondDigit) {
+        setSecondDigit(true);
+        setScreenValue(currentNum);
+      } else {
+        setScreenValue(screenValue + currentNum);
+      }
     } else {
-      setScreenValue(screenValue + currentNum);
+      if (screenValue === '0' || acc !== '') {
+        setScreenValue(currentNum);
+      } else {
+        setScreenValue(screenValue + currentNum);
+      }
     }
   };
 
@@ -78,6 +108,7 @@ export default function Home() {
     setAcc('');
     setScreenValue('0');
     setOperation('none');
+    setSecondDigit(false);
   };
 
   const delNum = function () {
@@ -113,6 +144,10 @@ export default function Home() {
     }
   };
 
+  const toggleSwitch = function (e) {
+    console.log('switch!');
+  };
+
   return (
     <Page>
       <Head>
@@ -128,11 +163,28 @@ export default function Home() {
         ></link>
         <title>Calculator</title>
       </Head>
-      <MainContainer>
+      <MainContainer theme={themeOne}>
         <CalcContainer>
           <CalcHeader>
-            <h1>calc</h1>
-            <p>theme</p>
+            <h1 aria-label="calculator">calc</h1>
+            <ThemeSwitchStyles>
+              <p class="theme">theme</p>
+              <div class="toggle">
+                <div class="toggle--num">
+                  <p>1</p>
+                  <p>2</p>
+                  <p>3</p>
+                </div>
+                <div class="toggle--switch">
+                  <input id="1" name="theme" type="radio" checked="checked" />
+                  <label class="label-one" for="1" onClick={toggleSwitch} />
+                  <input id="2" name="theme" type="radio" checked="" />
+                  <label class="label-two" for="2" onClick={toggleSwitch} />
+                  <input id="3" name="theme" type="radio" checked="" />
+                  <label class="label-three" for="3" onClick={toggleSwitch} />
+                </div>
+              </div>
+            </ThemeSwitchStyles>
           </CalcHeader>
           <ScreenStyles>
             <p>{screenValue}</p>
