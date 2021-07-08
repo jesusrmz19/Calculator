@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Page from '../components/Page';
-import { themeOne, themeTwo } from '../lib/themes';
+import { themeOne, themeTwo, themeThree } from '../lib/themes';
 import ButtonStyles from '../components/styles/Button';
 import CalcContainer from '../components/styles/CalcContainer';
 import NumpadStyle from '../components/styles/Numpad';
@@ -48,6 +48,8 @@ export default function Home() {
   let currentNum = '';
   const regex = /\d/;
   const resettingRef = useRef(false);
+  const [checked, setChecked] = useState('themeOne');
+  const [theme, setTheme] = useState(themeOne);
   const [acc, setAcc] = useState('');
   const [secondDigit, setSecondDigit] = useState(false);
   const [screenValue, setScreenValue] = useState('0');
@@ -145,7 +147,10 @@ export default function Home() {
   };
 
   const toggleSwitch = function (e) {
-    console.log('switch!');
+    setChecked(e.target.id);
+    if (e.target.id == 'themeOne') setTheme(themeOne);
+    if (e.target.id == 'themeTwo') setTheme(themeTwo);
+    if (e.target.id == 'themeThree') setTheme(themeThree);
   };
 
   return (
@@ -163,7 +168,7 @@ export default function Home() {
         ></link>
         <title>Calculator</title>
       </Head>
-      <MainContainer theme={themeTwo}>
+      <MainContainer theme={theme}>
         <CalcContainer>
           <CalcHeader>
             <h1 aria-label="calculator">calc</h1>
@@ -176,24 +181,30 @@ export default function Home() {
                   <p>3</p>
                 </div>
                 <div className="toggle--switch">
-                  <input id="1" name="theme" type="radio" checked="checked" />
-                  <label
-                    className="label-one"
-                    htmlFor="1"
-                    onClick={toggleSwitch}
+                  <input
+                    id="themeOne"
+                    name="theme"
+                    type="radio"
+                    checked={checked === 'themeOne'}
+                    onChange={toggleSwitch}
                   />
-                  <input id="2" name="theme" type="radio" checked="" />
-                  <label
-                    className="label-two"
-                    htmlFor="2"
-                    onClick={toggleSwitch}
+                  <label className="label-one" htmlFor="themeOne" />
+                  <input
+                    id="themeTwo"
+                    name="theme"
+                    type="radio"
+                    checked={checked === 'themeTwo'}
+                    onChange={toggleSwitch}
                   />
-                  <input id="3" name="theme" type="radio" checked="" />
-                  <label
-                    className="label-three"
-                    htmlFor="3"
-                    onClick={toggleSwitch}
+                  <label className="label-two" htmlFor="themeTwo" />
+                  <input
+                    id="themeThree"
+                    name="theme"
+                    type="radio"
+                    checked={checked === 'themeThree'}
+                    onChange={toggleSwitch}
                   />
+                  <label className="label-three" htmlFor="themeThree" />
                 </div>
               </div>
             </ThemeSwitchStyles>

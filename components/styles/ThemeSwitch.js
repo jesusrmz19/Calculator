@@ -4,7 +4,7 @@ const ThemeSwitchStyles = styled.div`
   display: flex;
   input {
     position: absolute;
-    top: 0;
+    top: -10000px;
     left: 0;
     opacity: 0;
   }
