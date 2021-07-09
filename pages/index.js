@@ -9,40 +9,9 @@ import NumpadStyle from '../components/styles/Numpad';
 import ScreenStyles from '../components/styles/Screen';
 import ThemeSwitchStyles from '../components/styles/ThemeSwitch';
 import { buttons } from '../lib/calculator-buttons';
-
-const MainContainer = styled.main`
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  --mobile: 375px;
-  --desktop: 1440px;
-  --mainbg: ${({ theme }) => theme.mainbg};
-  --darksatblue2: ${({ theme }) => theme.togglebg};
-  --screenbg: ${({ theme }) => theme.screenbg};
-  --keybluebg: ${({ theme }) => theme.sidekeybg};
-  --keyblueshadow: ${({ theme }) => theme.sidekeyshadow};
-  --keyredbg: ${({ theme }) => theme.equalkeybg};
-  --keyredshadow: ${({ theme }) => theme.equalkeyshadow};
-  --keygraybg: ${({ theme }) => theme.mainkeybg};
-  --keygrayshadow: ${({ theme }) => theme.mainkeyshadow};
-  box-sizing: border-box;
-  --fontsizenum: 32px;
-  --padtxt: ${({ theme }) => theme.text};
-  --restoftxt: ${({ theme }) => theme.restoftxt};
-  --font: 'Spartan', sans-serif;
-  background: var(--mainbg);
-`;
-
-const CalcHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: var(--restoftxt);
-  p {
-    font-size: 15px;
-    text-transform: uppercase;
-  }
-`;
+import MainContainer from '../components/styles/MainContainer';
+import CalcHeader from '../components/styles/CalcHeader';
+import FooterStyles from '../components/styles/Footer';
 
 export default function Home() {
   let currentNum = '';
@@ -257,6 +226,15 @@ export default function Home() {
             })}
           </NumpadStyle>
         </CalcContainer>
+        <FooterStyles>
+          <a
+            href="https://github.com/jesusrmz19/calculator"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </FooterStyles>
       </MainContainer>
     </Page>
   );

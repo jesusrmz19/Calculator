@@ -13,6 +13,11 @@ const ButtonStyles = styled.button`
   font-family: var(--font);
   line-height: 2;
   padding: 0;
+  @media (min-width: 765px) {
+    width: 95px;
+    margin: 15px 0;
+    border-radius: 10px;
+  }
 `;
 
 export default ButtonStyles;
