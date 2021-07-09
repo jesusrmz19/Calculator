@@ -21,6 +21,9 @@ const MainContainer = styled.main`
   --restoftxt: ${({ theme }) => theme.restoftxt};
   --font: 'Spartan', sans-serif;
   background: var(--mainbg);
+  @media (min-width: 765px) {
+    --fontsizenum: 28px;
+  }
 `;
 
 export default MainContainer;

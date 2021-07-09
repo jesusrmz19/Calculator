@@ -17,6 +17,9 @@ const ScreenStyles = styled.div`
     text-align: right;
     padding: 1.2rem;
   }
+  @media (min-width: 765px) {
+    height: 85px;
+  }
 `;
 
 export default ScreenStyles;

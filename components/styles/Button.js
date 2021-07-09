@@ -15,7 +15,8 @@ const ButtonStyles = styled.button`
   padding: 0;
   @media (min-width: 765px) {
     width: 95px;
-    margin: 15px 0;
+    height: 55px;
+    margin: 12px 0;
     border-radius: 10px;
   }
 `;
