@@ -12,6 +12,7 @@ const ButtonStyles = styled.button`
   margin: 8px 0;
   font-family: var(--font);
   line-height: 2;
+  padding: 0;
 `;
 
 export default ButtonStyles;

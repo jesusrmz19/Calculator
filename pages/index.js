@@ -166,7 +166,29 @@ export default function Home() {
           href="https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap"
           rel="stylesheet"
         ></link>
-        <title>Calculator</title>
+        <meta name="description" content="Jesus's Calculator 🧮" />
+        <meta name="twitter:title" content="Jesus's Calculator 🧮" />
+        <meta
+          name="twitter:description"
+          content="Calculator app challenge from Frontend Mentor"
+        />
+        <meta
+          name="twitter:image"
+          content="https://calculator.jesusrmz.com/thumbnail.jpg"
+        />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:url" content="https://calculator.jesusrmz.com/" />
+        <meta property="og:title" content="Jesus's Calculator 🧮" />
+        <meta
+          property="og:description"
+          content="Calculator app challenge from Frontend Mentor"
+        />
+        <meta
+          property="og:image"
+          content="https://calculator.jesusrmz.com/thumbnail.jpg"
+        />
+        <meta property="og:url" content="https://calculator.jesusrmz.com/" />
+        <title>Calculator 🧮</title>
       </Head>
       <MainContainer theme={theme}>
         <CalcContainer>
