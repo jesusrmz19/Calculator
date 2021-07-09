@@ -51,3 +51,5 @@ yarn-error.log*
 design
 images
 node_modules
+README-template
+style-guide
