@@ -189,6 +189,7 @@ export default function Home() {
         />
         <meta property="og:url" content="https://calculator.jesusrmz.com/" />
         <title>Calculator 🧮</title>
+        <link rel="icon" href="/signature_no_bg.png" />
       </Head>
       <MainContainer theme={theme}>
         <CalcContainer>
