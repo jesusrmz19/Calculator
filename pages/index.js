@@ -12,6 +12,7 @@ import { buttons } from '../lib/calculator-buttons';
 import MainContainer from '../components/styles/MainContainer';
 import CalcHeader from '../components/styles/CalcHeader';
 import FooterStyles from '../components/styles/Footer';
+import { formatNum } from '../lib/helpers';
 
 export default function Home() {
   let currentNum = '';
@@ -202,7 +203,7 @@ export default function Home() {
             </ThemeSwitchStyles>
           </CalcHeader>
           <ScreenStyles>
-            <p>{screenValue}</p>
+            <p>{formatNum(screenValue)}</p>
           </ScreenStyles>
           <NumpadStyle>
             {buttons.map((button) => {
